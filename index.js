@@ -14,12 +14,12 @@ router.get("/", (req, res) => {
 
 router.get("/login", (req, res) => {
   console.log("headers: ", req.headers)
-  userEmail = req.headers['X-Goog-Authenticated-User-Email']
-  userId = req.headers['X-Goog-Authenticated-User-ID']
+  userEmail = req.headers['x-goog-authenticated-user-email']
+  userId = req.headers['x-goog-authenticated-user-id']
 
-  iapJwt = req.headers['X-Goog-IAP-JWT-Assertion']
+  iapJwt = req.headers['x-goog-iap-jwt-assertion']
   if (typeof iapJwt !== 'undefined') {
-    res.send("empty X-Goog-IAP-JWT-Assertion");
+    res.send("empty x-goog-iap-jwt-assertion");
   }
   console.log(iapJwt)
 
