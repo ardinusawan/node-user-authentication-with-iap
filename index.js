@@ -11,7 +11,10 @@ app.set("views", path.join(__dirname, "views"));
 router.get("/", (req, res) => {
   userEmail = req.headers['X-Goog-Authenticated-User-Email']
   userId = req.headers['X-Goog-Authenticated-User-ID']
+
   iapJwt = req.headers['X-Goog-IAP-JWT-Assertion']
+  console.log(iapJwt)
+
   const ticket = auth.verify(iapJwt).catch(console.error);
   console.log(ticket)
 
