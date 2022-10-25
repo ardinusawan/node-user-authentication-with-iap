@@ -13,10 +13,14 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
+  console.log("headers: ", req.headers)
   userEmail = req.headers['X-Goog-Authenticated-User-Email']
   userId = req.headers['X-Goog-Authenticated-User-ID']
 
   iapJwt = req.headers['X-Goog-IAP-JWT-Assertion']
+  if (typeof iapJwt !== 'undefined') {
+    res.send("empty X-Goog-IAP-JWT-Assertion");
+  }
   console.log(iapJwt)
 
   const ticket = auth.verify(iapJwt).catch(console.error);
