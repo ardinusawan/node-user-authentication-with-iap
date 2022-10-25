@@ -9,6 +9,10 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 router.get("/", (req, res) => {
+  res.send("hello world");
+});
+
+router.get("/login", (req, res) => {
   userEmail = req.headers['X-Goog-Authenticated-User-Email']
   userId = req.headers['X-Goog-Authenticated-User-ID']
 
