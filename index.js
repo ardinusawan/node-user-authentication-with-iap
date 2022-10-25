@@ -18,7 +18,7 @@ router.get("/login", (req, res) => {
   userId = req.headers['x-goog-authenticated-user-id']
 
   iapJwt = req.headers['x-goog-iap-jwt-assertion']
-  if (typeof iapJwt !== 'undefined') {
+  if (typeof iapJwt === 'undefined') {
     res.send("empty x-goog-iap-jwt-assertion");
   }
   console.log(iapJwt)
