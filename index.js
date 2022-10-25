@@ -29,8 +29,8 @@ router.get("/login", (req, res) => {
   res.render("index", {
     email: userEmail,
     id: userId,
-    verified_email: ticket.getAttributes().payload.email,
-    verified_id: ticket.getUserId()}
+    verified_email: ticket.payload.email,
+    verified_id: ticket.payload.sub}
   );
 });
 
