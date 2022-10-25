@@ -23,15 +23,16 @@ router.get("/login", (req, res) => {
   }
   console.log(iapJwt)
 
-  const ticket = auth.verify(iapJwt).catch(console.error);
-  console.log(ticket)
-
-  res.render("index", {
-    email: userEmail,
-    id: userId,
-    verified_email: ticket.payload.email,
-    verified_id: ticket.payload.sub}
-  );
+  auth.verify(iapJwt)
+    .then(
+      function(data) {
+        res.render("index", {
+          email: userEmail,
+          id: userId,
+          verified_email: data.payload.email,
+          verified_id: data.payload.sub}
+        )})
+    .catch(console.error);
 });
 
 app.use("/", router);
